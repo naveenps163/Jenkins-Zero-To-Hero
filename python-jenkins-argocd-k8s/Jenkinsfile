@@ -4,7 +4,7 @@ pipeline {
     
     environment {
         IMAGE_TAG = "${BUILD_NUMBER}"
-        docker-cred = "9886147108/cicd-e2e"
+        DOCKER_REPO = "9886147108/cicd-e2e"
     }
     
     stages {
