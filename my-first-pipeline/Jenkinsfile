@@ -1,8 +1,41 @@
 pipeline {
     agent any
-    stage('Build') {
-    steps {
-        bat 'npm install'
-        bat 'npm run build'
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout code from Git repository
+                git 'https://github.com/naveenps163/Jenkins-Zero-To-Hero/'
+            }
+        }
+        
+        stage('Install Dependencies') {
+            steps {
+                // Install npm dependencies
+                bat 'npm install'
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                // Build the application
+                bat 'npm run build'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                // Run tests
+                bat 'npm test'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                // Deployment step (customize as needed)
+                echo 'Deploying application...'
+                // Add your deployment commands here
+            }
+        }
     }
 }
